@@ -1,0 +1,107 @@
+<app-home></app-home>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style=" text-align: center; ">Users</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="input-group mb-3" style="width: 25rem;margin-left: 25%;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Name</span>
+                  </div>
+                  <input type="text" class="form-control" [(ngModel)]="userObj.Name" [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="input-group mb-3" style="width: 25rem;margin-left: 25%;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">User ID</span>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="userObj.User_id" [ngModelOptions]="{standalone: true}">
+                  </div>
+
+                  <div class="input-group mb-3" style="width: 25rem;margin-left: 25%;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Password</span>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="userObj.pass" [ngModelOptions]="{standalone: true}">
+                  </div>
+
+                  <div class="input-group mb-3" style="width: 25rem;margin-left: 25%;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Confirm Password</span>
+                    </div>
+                    <input type="text" class="form-control" [(ngModel)]="ConfirmPass" [ngModelOptions]="{standalone: true}" (change)="checkPassword();">
+                  </div>
+
+                  <div class="input-group mb-3" style="width: 25rem;margin-left: 25%;">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">role</span>
+                    </div>
+                    <select class="form-control" [(ngModel)]="userObj.role" [ngModelOptions]="{standalone: true}">
+                        <option [value]=null>--Select--</option>
+                        <option *ngFor="let role of RolesList" [value]="role.Name">
+                         {{role.Name}}
+                     </option>
+                    </select>
+                    <!-- <input type="text" class="form-control" [(ngModel)]="userObj.role" [ngModelOptions]="{standalone: true}"> -->
+                  </div>
+
+                  <div class="row">
+                    <div class="form-inline mt-3" style=" margin-left: 24%; ">
+                        <button type="button" class="btn btn-success mx-1" *ngIf="! IsUpdate"
+                            (click)="saveUsersInfo()"><i class="fa fa-plus"></i>
+                            Save</button>
+                        <button type="button" class="btn btn-success mx-1" *ngIf="IsUpdate"
+                            (click)="UpdateUsers()"><i class="fa fa-plus"></i>
+                            Update</button>
+                        <button type="button" class="btn btn-warning ml-2" (click)="ResetUsersInfoEntryForm()"><i
+                                class="fa fa-refresh"></i>
+                            Reset</button>
+                        <button type="button" class="btn btn-danger mx-1" *ngIf="! IsUpdate"
+                        style="display:none;" ><i class="fa fa-trash"></i>
+                            Delete</button>
+                        <button type="button" class="btn btn-danger mx-1" *ngIf="IsUpdate"
+                            (click)="DeleteUsers(userObj)"><i class="fa fa-trash"></i>
+                            Delete</button>
+                    </div>
+                </div>
+
+              </form>
+        </div>
+        <div class="col-md-6">
+            <div class="table-fixed">
+                <table class="table table-bordered table-p4 custom-table-hover">
+                    <thead>
+                        <tr>
+                            <th class="width-1p text-center" style="padding-left: 0.2em;">SN#</th>
+                            <th class="width-10p">Name</th>
+                            <th class="width-1p">User_ID</th>
+                            <th class="width-1p">Role</th>
+                            <th class="width-1p">EDIT</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of userList; let i = index">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-left">{{item?.Name}} </td>
+                            <td class="text-left">{{item?.User_id}}</td>
+                            <td class="text-center">{{item?.role}}</td>
+                            <td class="text-center hoverPointer" (click)="EditUserInfo(item);"><i
+                                class="fa fa-pencil" aria-hidden="true"></i></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

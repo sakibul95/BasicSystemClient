@@ -1,0 +1,85 @@
+<app-home></app-home>
+
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style=" text-align: center; ">Permission</h3>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form>
+                <div class="input-group mb-3" style="width: 25rem;">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Users</span>
+                  </div>
+                  <select class="form-control" [(ngModel)]="SelectedUser" [ngModelOptions]="{standalone: true}" (change)="getPermissionList()">
+                      <option [value]=null>--Select--</option>
+                      <option *ngFor="let item of userList" [value]="item.User_id">
+                       {{item.Name}}
+                   </option>
+                  </select>
+                  <!-- <input type="text" class="form-control" [(ngModel)]="userObj.role" [ngModelOptions]="{standalone: true}"> -->
+                </div>
+
+                <!-- <div class="row">
+                    <div class="form-inline mt-3" style=" margin-left: 24%; ">
+                        <button type="button" class="btn btn-success mx-1" *ngIf="! IsUpdate"
+                            (click)="saveUsersInfo()"><i class="fa fa-plus"></i>
+                            Save</button>
+                        <button type="button" class="btn btn-success mx-1" *ngIf="IsUpdate"
+                            (click)="UpdateUsers()"><i class="fa fa-plus"></i>
+                            Update</button>
+                        <button type="button" class="btn btn-warning ml-2" (click)="ResetUsersInfoEntryForm()"><i
+                                class="fa fa-refresh"></i>
+                            Reset</button>
+                        <button type="button" class="btn btn-danger mx-1" *ngIf="! IsUpdate"
+                        style="display:none;" ><i class="fa fa-trash"></i>
+                            Delete</button>
+                        <button type="button" class="btn btn-danger mx-1" *ngIf="IsUpdate"
+                            (click)="DeleteUsers(userObj)"><i class="fa fa-trash"></i>
+                            Delete</button>
+                    </div>
+                </div> -->
+
+              </form>
+        </div>
+        <div class="col-md-4">
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <div class="table-fixed">
+                <table class="table table-bordered table-p4 custom-table-hover">
+                    <thead>
+                        <tr>
+                            <th class="width-1p text-center" style="padding-left: 0.2em;">SN#</th>
+                            <th class="width-10p">Menu</th>
+                            <th class="width-1p">Read</th>
+                            <th class="width-1p">Write</th>
+                            <th class="width-1p">Delete</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of permissionList; let i = index">
+                            <td class="text-center">{{i+1}}</td>
+                            <td class="text-left">{{item?.Menu}} </td>
+                            <td class="text-center"><input type="checkbox" [(ngModel)]="item.Read" (click)="UpdateCheckBox(item, 'R');UpdatePermission(item);"></td>
+                            <td class="text-center"><input type="checkbox" [(ngModel)]="item.Write" (click)="UpdateCheckBox(item, 'W');UpdatePermission(item);"></td>
+                            <td class="text-center"><input type="checkbox" [(ngModel)]="item.Delete" (click)="UpdateCheckBox(item, 'D');UpdatePermission(item);"></td>
+                            <!-- <td class="text-center hoverPointer" (click)="EditUserInfo(item);"><i
+                                class="fa fa-pencil" aria-hidden="true"></i></td> -->
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+</div>

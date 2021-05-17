@@ -1,0 +1,23 @@
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 [ngClass]="IsSignUp == false ? 'active' : 'inactive underlineHover'" id="SignIn" (click)="IsSignUp = false"> Sign In </h2>
+      <h2 id="signIn" [ngClass]="IsSignUp == false ? 'inactive underlineHover' : 'active'" (click)="IsSignUp = true">Sign Up </h2>
+  
+      <!-- Login Form -->
+      <form>
+        <input *ngIf="IsSignUp" type="text" id="Name" class="" name="Name" placeholder="Name" [(ngModel)]="user.Name">
+        <input type="text" id="UserName" class="fadeIn second" name="UserId" placeholder="User ID" [(ngModel)]="user.User_id" >
+        <input type="password" id="password" class="fadeIn third" name="Password" placeholder="Password" [(ngModel)]="user.pass">
+        <input *ngIf="IsSignUp" type="password" id="Retype-Password" class="" name="Retype-Password" placeholder="Retype-Password" [(ngModel)]="ConfirmPassword">
+        <input *ngIf="!IsSignUp" type="submit" class="" value="Sign In" (click)="signIn()">
+        <input *ngIf="IsSignUp" type="submit" class="" value="Sign Up" (click)="signUp()">
+
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+      </div>
+  
+    </div>
+  </div>

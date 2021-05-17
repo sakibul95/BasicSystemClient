@@ -1,0 +1,25 @@
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!-- <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button> -->
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <ul>
+                  <li><a class="nav-item nav-link" id="items" href="items" (click)="navClick('Items',$event)">Items</a></li>
+                  <li><a class="nav-item nav-link" id="users" href="users" *ngIf="(user.role == 'Admin')" (click)="navClick('Users',$event)">Users</a></li>
+                  <li><a class="nav-item nav-link" id="permission" href="permission" *ngIf="(user.role == 'Admin')" (click)="navClick('Permission',$event)">Permission</a></li>
+                  <li><a class="nav-item nav-link" id="LogOut" href=""  (click)="navClick('LogOut',$event)">Log Out</a></li>
+                </ul>
+                <!-- <a class="nav-item nav-link" href="home">Home <span class="sr-only"></span></a> -->
+                
+                
+                <!-- <a class="nav-item nav-link disabled" href="#">Disabled</a> -->
+              </div>
+            </div>
+          </nav>
+          <br>
+          <!-- <div>
+              <h1 style=" text-align: center;font-size: 7rem;">Welcome</h1>
+          </div> -->

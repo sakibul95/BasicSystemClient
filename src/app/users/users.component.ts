@@ -71,6 +71,14 @@ export class UsersComponent implements OnInit {
     this.userObj = JSON.parse(JSON.stringify(item));
   }
 
+  CheckDuplicateUserId(){
+    var index = this.userList.findIndex(x => x.User_id === this.userObj.User_id);
+    if (index>=0) {
+      alert('UserID can not be duplicate');
+      this.userObj.User_id=null;
+    }
+  }
+
   getUsersInfoList() {
 		this.userService.getUsersLists()
 			.subscribe(

@@ -70,6 +70,15 @@ export class ItemsComponent implements OnInit {
     this.itemObj = JSON.parse(JSON.stringify(item));
   }
 
+  CheckDuplicateItemId(){
+    var index = this.itemList.findIndex(x => x.code === this.itemObj.code);
+    if (index>=0) {
+      alert('ID can not be duplicate');
+      this.itemObj.code=null;
+    }
+  }
+
+
   CheckPermission(type){
     if (this.user.role == "Regular") {
       var avail = this.user.TblUserAccess.findIndex(x => x.Menu === 'Items');

@@ -21,7 +21,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">User ID</span>
                     </div>
-                    <input type="text" class="form-control" [(ngModel)]="userObj.User_id" [ngModelOptions]="{standalone: true}">
+                    <input type="text" class="form-control" [(ngModel)]="userObj.User_id" [ngModelOptions]="{standalone: true}" (change)="CheckDuplicateUserId()">
                   </div>
 
                   <div class="input-group mb-3" style="width: 25rem;margin-left: 25%;">
